@@ -1,0 +1,95 @@
+title: Template for ELTE
+author: Christophe Dervieux
+version: 0.1.0
+contributes:
+  formats:
+    common:
+      knitr:
+        opts_chunk:
+          echo: false
+          cache: true
+    beamer:
+      fig-width: 6.5
+      fig-height: 4.5
+      header-includes: |
+        \usetheme[sectionstyle=style2]{trigon}
+        \usetheme{Singapore}
+        \AtBeginPart{
+          \let\insertpartnumber\relax
+          \let\partname\relax
+          \frame{\partpage}
+        }
+        \AtBeginSection{
+          \let\insertsectionnumber\relax
+          \let\sectionname\relax
+          \frame{\sectionpage}
+        }
+        \AtBeginSubsection{
+          \let\insertsubsectionnumber\relax
+          \let\subsectionname\relax
+          \frame{\subsectionpage}
+        }
+        
+        \AtBeginSection[]
+        {
+            \frame{\sectionpage}
+        }
+        %---------------------------------------------------
+        \definecolor{clemsonpurple}{HTML}{522D80}
+         \definecolor{clemsonorange}{HTML}{F66733}
+        \definecolor{uiucblue}{HTML}{003C7D}
+        \definecolor{uiucorange}{HTML}{F47F24}
+        
+        \definecolor{primarycolor}{HTML}{153841}
+        \definecolor{secondarycolor}{HTML}{53b5ba}
+        
+        \usecolortheme[named=primarycolor]{structure}
+        
+        % Some optional color adjustments to Beamer. Change as you see fit.
+        %------------------------------------------------------------------
+        \setbeamercolor{frametitle}{fg=primarycolor, bg=white}
+        \setbeamercolor{title}{fg=primarycolor,,bg=white}
+        \setbeamercolor{local structure}{fg=primarycolor}
+        \setbeamercolor{section in toc}{fg=primarycolor,bg=white}
+        \setbeamercolor{footline}{fg=clemsonpurple!50, bg=white}
+        \setbeamercolor{block title}{fg=secondarycolor,bg=white}
+        \titlegraphic{\includegraphics[width=0.25\paperwidth]{_extensions/MarcellGranat/elte/logo.png}}
+        %
+        \setbeamercolor{structure}{fg=blue}
+        \setbeamercolor{local structure}{parent=structure}
+        \setbeamercolor{item projected}{parent=item,use=item,fg=clemsonpurple,bg=white}
+        \setbeamercolor{enumerate item}{parent=item}
+        
+        % Adjust some item elements. More cosmetic things.
+        %-------------------------------------------------
+        \setbeamertemplate{itemize item}{\color{clemsonpurple}$$\bullet$$}
+        \setbeamertemplate{itemize subitem}{\color{clemsonpurple}\scriptsize{$$\bullet$$}}
+        \setbeamertemplate{itemize/enumerate body end}{\vspace{.6\baselineskip}}
+        \AtBeginDocument{%
+          {
+            \usebeamercolor{section in head/foot}
+          }
+          \pgfdeclareverticalshading{beamer@headfade}{\paperwidth}
+          {%
+            color(0cm)=(bg);
+            color(1.25cm)=(bg)%
+          }
+          \setbeamercolor{section in head/foot}{bg=}
+        }
+        \addtoheadtemplate{\pgfuseshading{beamer@headfade}\vskip-1.25cm}{}
+        \makeatother
+        \AtBeginPart{}
+        \AtBeginSection{}
+        \AtBeginSubsection{}
+        \AtBeginSubsubsection{}
+        \setbeamertemplate{navigation symbols}{}
+        \makeatletter
+      template-partials:
+          # Add here the partials your format is using
+        - "/partials/title.tex"
+        - "/partials/_author.tex"
+        - "/partials/before-body.tex"
+        - "/partials/after-body.tex"
+      format-resources:
+          # Add here the resources required for the PDF rendering
+                      

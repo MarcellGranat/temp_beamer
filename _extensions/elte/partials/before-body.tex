@@ -1,0 +1,14 @@
+$if(title)$
+\frame{\titlepage}
+$endif$
+
+$for(include-before)$
+$include-before$
+
+$endfor$
+$if(toc)$
+\begin{frame}
+\tableofcontents[hideallsubsections]
+\end{frame}
+
+$endif$
